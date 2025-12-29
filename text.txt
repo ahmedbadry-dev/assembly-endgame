@@ -1,0 +1,10 @@
+
+
+
+=> win condition 
+    when user get all letter before losing all language
+
+=> lose condition
+    when user losing all click on 8 letter before get the word
+
+=> 
