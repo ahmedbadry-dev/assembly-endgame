@@ -1,0 +1,61 @@
+import {useState} from 'react'
+import type {GameState} from '../types/game'
+import {wordsData} from '../data/words'
+
+export const useGameLogic = () => {
+    // ---------  State ----------
+    const [state, setState] = useState<GameState>({
+        word: '',
+        guesses: [],
+        lives: 8,
+        status: 'playing'
+    })
+
+    // ---------- Actions ----------
+    const guessLetter = (letter: string) => {
+        // prevent repeat letter
+        if(letter in state.guesses) return
+
+        setState(prev => {
+            const newGuesses = [...prev.guesses, letter]
+            
+            const newLives = prev.word.includes(letter)? prev.lives : prev.lives -=1
+
+            const newStatus = 
+                prev.word.split('').every( letter => prev.guesses.includes(letter)) ?
+                    'win'
+                : newLives === 0 ?
+                    'lose'
+                : 'playing'
+
+
+            return {
+                ...prev,
+                guesses: newGuesses,
+                lives: newLives,
+                status: newStatus
+            }
+        })
+    }
+
+    const resetGame = (): void => {
+        const word =  selectRandomWord();
+        setState({
+            word: word,
+            guesses: [],
+            lives: 8,
+            status: 'playing'
+        })
+    }
+
+    return {
+        state,
+        guessLetter,
+        resetGame
+    }
+}
+
+const selectRandomWord = () => {
+    const randomNumber = Math.floor(Math.random() * wordsData.length)
+    return wordsData[randomNumber]
+}

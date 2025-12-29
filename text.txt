@@ -8,3 +8,52 @@
     when user losing all click on 8 letter before get the word
 
 => 
+
+guessLetter(): void // get the letter that user clicked
+checkLetter(letter): boolean // check if letter correct or not 
+gameState(): string // check if there a lives sttil and check if user guess all letter
+resetGame()
+useGameLogic() {
+    let word = selectRandomWord()
+
+    let state = {
+        word: word,
+        guesses: [],
+        lives: 6,
+        status: 'playing
+    }
+
+    const selectRandomWord = (): string => {
+        const randomNumber = Math.Flor(Math.random() * wordData.length)
+        return wordData[randomNumber]
+    }
+
+    const guessLetter = (letter: string) => {
+        if (state.guesses.includes(letter)) return
+
+        state.guesses.push(letter)
+
+        if(letter not in state.word){
+            state.lives -=1
+        }
+
+        if(all letter in word guessed){
+            state.status = 'win
+        }else if(state.lives === 0){
+            state.status = 'lose
+        }else {
+            state.status = 'playing
+        }
+    }
+
+    const resetGame = () => {
+        word =  selectRandomWord()
+    }
+
+    state = {
+        word: word,
+        guesses: [],
+        lives: 6,
+        status: 'playing
+    }
+}
