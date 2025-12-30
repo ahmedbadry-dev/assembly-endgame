@@ -42,13 +42,15 @@ A **Hangman-style game** built with **React, TypeScript, TailwindCSS & Vite**. C
 
 ## 🖼 Screenshots
 
-**Losing**
-![LOSE :(](./screenshots/p1.png)
-
-**Wining**
+## **Wining**
 ![win](./screenshots/p3.png)
 
-**Playing**
+
+## **Losing**
+![LOSE :(](./screenshots/p1.png)
+
+
+## **Playing**
 ![Playing](./screenshots/p2.png)
 
 > Replace these images with your real screenshots for the repo.
