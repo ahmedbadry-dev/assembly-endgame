@@ -10,9 +10,10 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
     const secreteWord = word.split('')
     const MAX_LIVES = 8
     const deadCount = MAX_LIVES - lives
+    console.log(word);
 
     return (
-        <div className="min-w-lg  flex flex-col items-center mb-10">
+        <div className=" md:min-w-lg flex flex-col items-center mb-10">
             <div
                 className={`
                         ${status === 'win' ?
@@ -37,7 +38,7 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
                 </p>
             </div>
 
-            <div className="flex flex-wrap gap-0.5 max-w-sm justify-center items-center mb-8">
+            <div className="flex flex-wrap gap-0.5 md:max-w-lg justify-center items-center mb-8">
                 {techStack.map((tech, index) => {
                     const isDead = index < deadCount
 
@@ -47,6 +48,7 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
                             className={`
                                 p-2 font-medium rounded-sm ${tech.className}
                                 relative overflow-hidden
+                                text-xs md:text-2xl
                             `}
                         >
                             {tech.name}
@@ -74,7 +76,7 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
                 })}
             </div>
 
-            <div className="flex max-w-lg h-15 px-4 gap-x-1 text-zinc-50">
+            <div className="flex md:max-w-lg h-13 md:h-15 md:px-4 gap-x-1 text-zinc-50">
                 {secreteWord.map((letter, index) => {
                     const isGuessed = guesses.includes(letter)
 
@@ -82,7 +84,7 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
                         <p
                             key={`${letter}-${index}`}
                             className="
-                            bg-zinc-800 rounded-t w-14
+                            bg-zinc-800 rounded-t w-8 md:w-14
                             flex justify-center items-center
                             font-medium border-b-2 border-zinc-400
                             h-full text-xl
