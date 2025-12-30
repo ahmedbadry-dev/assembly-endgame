@@ -30,8 +30,8 @@ function App() {
 
 
   return (
-    <div className="bg-zinc-900 h-dvh font-display">
-      <div className=" border max-w-4xl h-full m-auto p-4 flex flex-col justify-center items-center ">
+    <div className="bg-zinc-900 h-screen md:h-dvh font-display">
+      <div className=" max-w-4xl h-full m-auto p-4 flex flex-col justify-center items-center ">
         {isWinEffect && <Confetti width={windowSize.width} height={windowSize.height} />}
         <Header />
         <GameBoard guesses={state.guesses} word={state.word} lives={state.lives} status={state.status} />

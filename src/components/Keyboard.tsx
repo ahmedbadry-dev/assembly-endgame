@@ -24,7 +24,7 @@ const Keyboard = ({ guessLetter, guesses, word }: KeyboardProps) => {
 
 
     return (
-        <div className=" max-w-2xl p-4 flex flex-wrap gap-1 justify-center">
+        <div className="md:max-w-2xl p-4 flex flex-wrap gap-1 justify-center">
             {
                 KEYBOARD.map((letter) => (
                     <button key={letter}
@@ -36,7 +36,8 @@ const Keyboard = ({ guessLetter, guesses, word }: KeyboardProps) => {
                                     : 'bg-yellow-500'
                             }
                         disabled:cursor-not-allowed
-                        w-14 h-14
+                        md:w-14 md:h-14
+                        w-8 h-8
                         rounded-md text-xl font-medium
                         cursor-pointer
                         transition-colors duration-200
