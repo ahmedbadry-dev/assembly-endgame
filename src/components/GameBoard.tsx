@@ -1,31 +1,47 @@
-
-import { techStack } from '../data/words';
+import { techStack } from '../data/words'
 
 import Skull from '../assets/Skull.svg'
 interface gameBoardProps {
     word: string
     guesses: string[]
     lives: number
+    status: string
 }
-const GameBoard = ({ guesses, word, lives }: gameBoardProps) => {
-
+const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
     const secreteWord = word.split('')
-    const MAX_LIVES = 8;
-    const deadCount = MAX_LIVES - lives;
+    const MAX_LIVES = 8
+    const deadCount = MAX_LIVES - lives
 
-
-    console.log('lives =>> ', lives);
+    console.log('lives =>> ', lives)
     console.log({
         lives,
-        deadCount
-    });
-
+        deadCount,
+    })
 
     return (
         <div className="min-w-lg  flex flex-col items-center mb-10">
-            <div className="w-full bg-green-500 p-3 text-center text-zinc-200 rounded-xl mb-8">
-                <p className="text-2xl font-light ">You win!</p>
-                <p className="text-md">Will done</p>
+            <div
+                className={`
+                        ${status === 'win' ?
+                        ' bg-green-500'
+                        : status === 'lose' ?
+                            ' bg-red-500'
+                            : 'invisible'
+                    }
+                        w-full p-3 
+                        text-center text-zinc-200 
+                        rounded-xl mb-8`}
+            >
+                <p className="text-2xl font-light ">
+                    {
+                        status === 'win' ? 'You Win!' : 'Game Over!'
+                    }
+                </p>
+                <p className="text-md">
+                    {
+                        status === 'win' ? 'Well done' : 'You lose! better start learning Assembly '
+                    }
+                </p>
             </div>
 
             <div className="flex flex-wrap gap-0.5 max-w-sm justify-center items-center mb-8">
@@ -65,25 +81,33 @@ const GameBoard = ({ guesses, word, lives }: gameBoardProps) => {
                 })}
             </div>
 
-
             <div className="flex max-w-lg h-15  px-4 gap-x-1 text-zinc-50">
-                {
-                    secreteWord.map((letter, index) => (
-                        <p
-                            key={`${letter}-${index}`}
-                            className="
+                {secreteWord.map((letter, index) => (
+                    <p
+                        key={`${letter}-${index}`}
+                        className="
                             bg-zinc-800 rounded-t w-14 
                             flex justify-center items-center 
                             font-medium border-b-2 border-zinc-400 
                             h-full text-xl
                             "
-                        ><span
-                            className={
-                                `${!guesses.filter(l => secreteWord.includes(l)).includes(letter) ? 'hidden' : null}`
-                            }
-                        >{letter}</span></p>
-                    ))
-                }
+                    >
+                        {status === 'playing' ?
+                            <span
+                                className={`${!guesses.filter((l) => secreteWord.includes(l)).includes(letter) ? 'hidden' : null}`}
+                            >
+                                {letter}
+                            </span>
+                            : status === 'lose' ?
+                                <span
+                                    className={`${!guesses.filter((l) => secreteWord.includes(l)).includes(letter) ? 'text-red-600' : null}`}
+                                >
+                                    {letter}
+                                </span>
+                                : null
+                        }
+                    </p>
+                ))}
             </div>
         </div>
     )

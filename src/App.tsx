@@ -18,7 +18,7 @@ function App() {
     <div className="bg-zinc-900 h-dvh font-display">
       <div className=" border max-w-4xl h-full m-auto p-4 flex flex-col justify-center items-center ">
         <Header />
-        <GameBoard guesses={state.guesses} word={state.word} lives={state.lives} />
+        <GameBoard guesses={state.guesses} word={state.word} lives={state.lives} status={state.status} />
         <Keyboard guessLetter={guessLetter} guesses={state.guesses} word={state.word} />
       </div>
     </div>
