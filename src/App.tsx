@@ -20,6 +20,13 @@ function App() {
         <Header />
         <GameBoard guesses={state.guesses} word={state.word} lives={state.lives} status={state.status} />
         <Keyboard guessLetter={guessLetter} guesses={state.guesses} word={state.word} />
+        {
+          state.status !== 'playing' &&
+          <button
+            onClick={resetGame}
+            className="w-50 py-2 cursor-pointer hover:bg-sky-500 transition-colors duration-200 text-lg font-medium rounded-lg tracking-wider mt-5 bg-sky-400"
+          >New Game</button>
+        }
       </div>
     </div>
   )

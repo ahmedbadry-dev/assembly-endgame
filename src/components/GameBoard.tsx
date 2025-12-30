@@ -81,34 +81,45 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
                 })}
             </div>
 
-            <div className="flex max-w-lg h-15  px-4 gap-x-1 text-zinc-50">
-                {secreteWord.map((letter, index) => (
-                    <p
-                        key={`${letter}-${index}`}
-                        className="
-                            bg-zinc-800 rounded-t w-14 
-                            flex justify-center items-center 
-                            font-medium border-b-2 border-zinc-400 
+            <div className="flex max-w-lg h-15 px-4 gap-x-1 text-zinc-50">
+                {secreteWord.map((letter, index) => {
+                    const isGuessed = guesses.includes(letter)
+
+                    return (
+                        <p
+                            key={`${letter}-${index}`}
+                            className="
+                            bg-zinc-800 rounded-t w-14
+                            flex justify-center items-center
+                            font-medium border-b-2 border-zinc-400
                             h-full text-xl
                             "
-                    >
-                        {status === 'playing' ?
-                            <span
-                                className={`${!guesses.filter((l) => secreteWord.includes(l)).includes(letter) ? 'hidden' : null}`}
-                            >
-                                {letter}
-                            </span>
-                            : status === 'lose' ?
-                                <span
-                                    className={`${!guesses.filter((l) => secreteWord.includes(l)).includes(letter) ? 'text-red-600' : null}`}
-                                >
+                        >
+                            {/* PLAYING */}
+                            {status === 'playing' && (
+                                <span className={isGuessed ? '' : 'hidden'}>
                                     {letter}
                                 </span>
-                                : null
-                        }
-                    </p>
-                ))}
+                            )}
+
+                            {/* LOSE */}
+                            {status === 'lose' && (
+                                <span className={isGuessed ? '' : 'text-red-600'}>
+                                    {letter}
+                                </span>
+                            )}
+
+                            {/* WIN */}
+                            {status === 'win' && (
+                                <span className={isGuessed ? 'text-green-600' : ''}>
+                                    {letter}
+                                </span>
+                            )}
+                        </p>
+                    )
+                })}
             </div>
+
         </div>
     )
 }
