@@ -1,5 +1,4 @@
 import { techStack } from '../data/words'
-
 import Skull from '../assets/Skull.svg'
 interface gameBoardProps {
     word: string
@@ -11,12 +10,6 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
     const secreteWord = word.split('')
     const MAX_LIVES = 8
     const deadCount = MAX_LIVES - lives
-
-    console.log('lives =>> ', lives)
-    console.log({
-        lives,
-        deadCount,
-    })
 
     return (
         <div className="min-w-lg  flex flex-col items-center mb-10">
