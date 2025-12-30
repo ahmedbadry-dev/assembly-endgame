@@ -10,7 +10,7 @@ const GameBoard = ({ guesses, word, lives, status }: gameBoardProps) => {
     const secreteWord = word.split('')
     const MAX_LIVES = 8
     const deadCount = MAX_LIVES - lives
-    console.log(word);
+
 
     return (
         <div className=" md:min-w-lg flex flex-col items-center mb-10">

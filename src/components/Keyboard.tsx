@@ -18,11 +18,6 @@ const Keyboard = ({ guessLetter, guesses, word }: KeyboardProps) => {
         !wordLetters.includes(letter)
     ))
 
-    console.log(correctLetter);
-    console.log(wrongLetter);
-
-
-
     return (
         <div className="md:max-w-2xl p-4 flex flex-wrap gap-1 justify-center">
             {
