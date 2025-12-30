@@ -5,4 +5,4 @@ export type GameState  = {
     guesses: string[],
     status: 'win' | 'lose' | 'playing'
 }
-
+ 
